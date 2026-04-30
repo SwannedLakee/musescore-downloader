@@ -1,5 +1,6 @@
 import browser from 'webextension-polyfill';
 import Printer from "pdfmake";
+import pdfFonts from 'pdfmake/build/vfs_fonts';
 import {getMediaUrlWithAlgorithm} from "./tokenAlgorithm";
 import {getMediaUrlWithScrape} from "./scrape";
 import {capitalizeFirstLetter, promiseTimeout} from "../modules/utils";
@@ -17,6 +18,8 @@ export let scorePagesSum = 0;
 let latestProgressMessage = null;
 let isTokenAlgorithmAvailable = true;
 let pdfFile = null;
+
+Printer.vfs = pdfFonts.vfs;
 
 const setScoreProps = async () => {
   isOnMobile = window.innerWidth < 960;
@@ -163,16 +166,26 @@ const openSheet = async (resolve, reject) => {
 const downloadSheet = async (resolve, reject) => {
   abortController.signal.addEventListener('abort', reject);
 
-  if (pdfFile) {
-    await sendMessageToPopup('PDF successfully generated', false, true);
-    resolve(pdfFile.download(`${scoreComposer ? scoreComposer + ' - ' : ''}${scoreName}.pdf`));
-  } else {
-    await buildPdf();
+  const pdfFileName = `${scoreComposer ? scoreComposer + ' - ' : ''}${scoreName}.pdf`;
 
-    if (pdfFile) {
+  if (!pdfFile) {
+    await buildPdf();
+  }
+
+  if (pdfFile) {
+    await sendMessageToPopup('Downloading PDF file', true);
+
+    try {
+      pdfFile.download(pdfFileName);
       await sendMessageToPopup('PDF successfully generated', false, true);
-      resolve(pdfFile.download(`${scoreComposer ? scoreComposer + ' - ' : ''}${scoreName}.pdf`));
+      resolve();
+    } catch (e) {
+      await sendMessageToPopup('Failed to download PDF file', false, true);
+      reject(e);
     }
+  } else {
+    await sendMessageToPopup('Failed to generate PDF file', false, true);
+    reject(new Error('PDF file generation failed'));
   }
 };
 

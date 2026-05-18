@@ -76,6 +76,12 @@ Long story short Chrome removed the extension from Web Store because of Musescor
 3. Click to Music Score Downloader icon in the extensions tab
 4. Select what you want to do
 
+## Tips
+
+* When sheet music isn't available for download but a MIDI file is, you can convert it using 
+https://webmscore-pwa.librescore.org/ (by the amazing LibreScore developer community)
+to get PDF, MusicXML, MSCZ, MP3, and more. The same method can be used to get all pages of a music sheet.
+
 ## Supported browsers
 
 * Firefox

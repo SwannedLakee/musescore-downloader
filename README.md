@@ -9,7 +9,12 @@ Browser extension allowing you to download:
 * music sheets - PDF
 * midi - MID
 
-⚠️ Doesn't work with official scores. ⚠️
+> [!NOTE]
+> ⚠️ Doesn't work with official scores. ⚠️
+>
+> But when it's possible to download a MIDI file, you can convert it using
+https://webmscore-pwa.librescore.org/ (by LibreScore developers)
+to get PDF, MusicXML, MSCZ, MP3, and more. The same method can be used to get all pages of an official music sheet.
 
 <img src="https://raw.githubusercontent.com/ingui-n/musescore-downloader/master/assets/screenshots/extension.png" alt="Beautiful image of the extension"/>
 
@@ -32,8 +37,7 @@ Long story short Chrome removed the extension from Web Store because of Musescor
 
 ### Manual installation
 
-<details>
-  <summary>For Chromium users: (click)</summary>
+#### Chromium browsers (Chrome, Edge, Opera, Brave, Vivaldi, ...)
 
 1. Go to [the latest release](https://github.com/ingui-n/musescore-downloader/releases/latest)
 2. Download the **ZIP** file `musescore-downloader-0.x.x-manifest-v3.zip` and extract it to a safe location
@@ -45,29 +49,12 @@ Long story short Chrome removed the extension from Web Store because of Musescor
    containing the extracted files.
 6. That's it! Extension is now ready to use 🎉
 
-</details>
-
-<details>
-  <summary>For Firefox users: (click)</summary>
+#### Firefox
 
 1. Go to [the latest release](https://github.com/ingui-n/musescore-downloader/releases/latest)
 2. Click on the **XPI** the file `musescore-downloader-0.x.x-manifest-v2.xpi`
 3. A bubble with text and button should appear. Click on `Continue to Installation` and `Add`
 4. That's it! Extension is now ready to use 🎉
-
-</details>
-
-<details>
-  <summary>Chromium CRX approach (still working on Opera): (click)</summary>
-
-1. Go to [the latest release](https://github.com/ingui-n/musescore-downloader/releases/latest)
-2. Click on the **CRX** file `musescore-downloader-0.x.x-manifest-v3.crx`
-3. This should trigger opening top bar message with `Go to extension` button
-4. This will redirect you to [chrome://extensions/](chrome://extensions/). Just click on `Install` button and confirm
-   the installation.
-5. That's it! Extension is now ready to use 🎉
-
-</details>
 
 ## Usage
 
@@ -75,12 +62,6 @@ Long story short Chrome removed the extension from Web Store because of Musescor
 2. Open a music sheet
 3. Click to Music Score Downloader icon in the extensions tab
 4. Select what you want to do
-
-## Tips
-
-* When sheet music isn't available for download but a MIDI file is, you can convert it using 
-https://webmscore-pwa.librescore.org/ (by the amazing LibreScore developer community)
-to get PDF, MusicXML, MSCZ, MP3, and more. The same method can be used to get all pages of a music sheet.
 
 ## Supported browsers
 
